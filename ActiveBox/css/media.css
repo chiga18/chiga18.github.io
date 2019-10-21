@@ -1,0 +1,115 @@
+@media (max-width: 1170px){
+    /* --------- WORKS -------- */
+    .works__item{
+        width: 50%;
+        height: auto;
+    }
+    .works__item img{
+        width: 100%;
+    }
+}
+@media (max-width: 970px){
+    /* --------- SLIDER --------- */
+    .slider__item{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+    .slider__part{
+        width: 100%;
+    }
+    .slider__description{
+        padding: 10px;
+        max-width: none;
+    }
+    .slick-dots{
+        position: static;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+}
+@media (max-width: 830px){
+    .show{
+        display: block !important;
+    }
+    .navigation .nav{
+        display: none;
+        position: absolute;
+        width: 100%;
+        top: 100%;
+        background: #202440;
+    }
+    .navigation .nav ul{
+        display: block;
+        text-align: center;
+        padding: 0;
+    }
+    .navigation .nav ul li{
+        padding: 10px 0;
+        margin: 0;
+        -webkit-transition: background .2s;
+        transition: background .2s;
+    }
+    .navigation .nav ul li:hover{
+        background: #000;
+    }
+    .navigation .nav ul li a{
+        display: inline-block;
+        width: 100%;
+    }
+    .navigation__btn{
+        display: block;
+    }
+}
+@media (max-width: 750px){
+    /* --------- HEADER --------- */
+    h1{
+        font-size: 37px;
+    }
+    .intro__p{
+        font-size: 16px;
+    }
+    /* --------- FEATURES --------- */
+    .features__item{
+        width: 100%;
+    }
+    /* --------- WORKS -------- */
+    .works__item{
+        width: 100%;
+    }
+    /* --------- TEAM --------- */
+    .team__inner{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+    .team__item{
+        margin-bottom: 25px;
+        text-align: center;
+    }
+    .social__btns{
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+    }
+}
+@media (max-width: 550px){
+    .footer__content{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+    }
+    .footer__item{
+        margin-bottom: 20px;
+    }
+}
