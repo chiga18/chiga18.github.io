@@ -1,0 +1,105 @@
+@media (max-width:1076px){
+    .description__firstline p{
+        margin: 60px 0 0 10%;  
+    }
+}
+@media (max-width:800px){
+    .intro{
+        text-align: center;
+    }
+}
+@media (max-width: 790px){
+    .description__secondline img{
+        display: none;
+    }
+}
+@media (max-width:750px){
+    .description img{
+        display: none;
+    }
+    .description__firstline p{
+        margin: 0;
+        max-width: none;
+    }
+    .description__secondline{
+        margin: 0;
+    }
+    .description__secondline p{
+        padding: 0;
+        max-width: none;
+    }
+    .description__firstline,
+    .description__secondline{
+        padding:40px;
+    }
+
+
+    .services__items{
+        -ms-flex-pack: distribute;
+            justify-content: space-around;
+    }
+
+
+    .licenses__innder{
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        text-align: center;
+    }
+    .licenses__item{
+        margin-top: 20px;
+    }
+
+
+    /* --------- SCHEME__WORK < 750px --------- */
+    .arc1,.arc2,.arc3,.arc4{
+        display: none;
+    }
+    .scheme__work__item{
+        position: static;
+        margin: 15px 0;
+    }
+    .scheme__work__item br + br{
+        display: none;
+    }
+    .scheme__work{
+        height: auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+    }
+}
+@media (max-width:700px){
+    .navigation{
+        padding: 0;
+    }
+    .navigation nav ul{
+        display: block;
+    }
+    .navigation nav ul li a{
+        display: block;
+        width: 100%;
+        text-align: center;
+        border-bottom: 1px solid #c2eaaf;
+        padding: 10px 0;
+    }
+}
+@media (max-width:500px){
+    .header__top{
+        display: block;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer__inner{
+        flex-direction: column;
+    }
+    .footer__inner img{
+       margin-bottom: 10px;
+    }
+}
