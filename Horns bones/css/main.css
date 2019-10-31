@@ -1,0 +1,261 @@
+body{
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+.container{
+    max-width: 1190px;
+    width: 100%;
+    margin: 0 auto;
+}
+h1{
+    margin: 0;
+}
+h1{
+    color: #030303;
+    font-size: 32px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+/* --------- HEADER --------- */
+header{
+    color: #030303;
+    border-bottom: 3px solid #212121;
+}
+header a{
+    color: #030303;
+}
+.header__top{
+    padding: 35px 0;
+    border-bottom: 1px solid #c5c4c4;
+}
+.header__top__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    display: inline-block;
+    text-decoration: none;
+}
+.logo__discription{
+    text-align: center;
+
+    font-size: 10px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+}
+.basket{
+    display: flex;
+    align-items: center;
+
+    color: #030303;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: uppercase;
+
+    transition: all .2s;
+}
+.basket:hover{
+    text-shadow: #000000 0 0 2px;
+    text-decoration: underline;
+}
+
+
+/* ------ navigation */
+.navigation nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    height: 65px;
+    display: flex;
+    align-items: center;
+}
+.navigation nav ul li{
+    padding: 2px 55px;
+    border-right: 1px solid#c8c8c8;
+
+    display: flex;
+    justify-content: center;
+}
+.navigation nav ul li:first-child{
+    padding-left: 0;
+}
+.navigation nav ul li:last-child{
+    border-right: 0;    
+}
+.navigation nav ul li a{
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2.56px;
+
+    transition: all .2s;
+}
+.navigation nav ul li a:hover{
+    text-shadow: #000000 0 0 2px;
+}
+
+.navigation nav ul li a.nav__active{
+    font-weight: 600;
+}
+
+
+/* --------- GOODS --------- */
+.goods{
+    padding-top: 65px;
+}
+.goods__inner{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.goods__item{
+    width: 23%;
+    color: #3d3d3d;
+    text-decoration: none;
+    margin-bottom: 60px;
+}
+.goods__item:hover .goods__item__preview{
+    box-shadow: 0 0 10px #000000;
+}
+.goods__item:hover{
+    text-decoration: underline;
+}
+.goods__item__preview{
+    width: 100%;
+    height: 281px;
+    border: 1px solid #dcd9d9;
+
+    box-sizing: border-box;
+    padding: 8px;
+
+    transition: all .2s;
+}
+.goods__item__preview img{
+    width: 100%;
+    height: 100%;
+}
+.goods__item__description{
+    text-align: center;
+}
+.goods__name{
+    color: #3d3d3d;
+    font-size: 18px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.goods__price{
+    color: #474747;
+    font-size: 17px;
+    font-weight: 700;
+}
+.all__goods{
+    display: block;
+    text-align: center;
+    margin-bottom: 60px;
+
+    color: #335670;
+    font-size: 16px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2.56px;
+
+    transition: all .2s;
+}
+.all__goods:hover{
+    color: #000000;
+}
+
+/* --------- CLIENTS --------- */
+.clients{
+    background: #fafafa;
+    text-align: center;
+    color: #292828;
+
+    padding: 20px;
+}
+h2{
+    margin: 0;
+    font-size: 26px;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4.16px;
+}
+.clients p{
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: 2.56px;
+}
+.map{
+    width: 100%;
+}
+
+
+
+
+
+
+/* --------- FOOTER --------- */
+footer{
+    border-top: 1px solid #c5c4c4;
+    border-bottom: 1px solid #c5c4c4;
+    padding: 20px 0;
+}
+.footer__inner{
+    display: flex;
+    justify-content: space-between;
+}
+.footer__contacts{
+    color: #494949;
+    font-weight: 400;
+    font-size: 16px;
+}
+.contacts__title{
+    font-size: 21px;
+}
+
+
+
+.payment{
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.payment ul{
+    text-align: end;
+    list-style: none;
+}
+.payment a{
+    color: #494949;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+.payment a:hover{
+    text-decoration: underline;
+}
+.payment p{
+    margin: 0;
+    color: #777777;
+    font-size: 15px;
+    font-weight: 400;
+}
+.copyright{
+    color: #777777;
+    font-size: 14px;
+    font-weight: 400;
+    height: 42px;
+    background: #ededed;
+
+    display: flex;
+    align-items: center;
+}
