@@ -50,6 +50,7 @@ header a{
 .basket{
     display: flex;
     align-items: center;
+    margin-right: 10px;
 
     color: #030303;
     text-decoration: none;
@@ -210,6 +211,12 @@ footer{
 .footer__inner{
     display: flex;
     justify-content: space-between;
+}
+.footer__item{
+    width: 33.33333%;
+}
+.footer__image{
+    text-align: center;
 }
 .footer__contacts{
     color: #494949;
