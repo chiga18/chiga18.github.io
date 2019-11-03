@@ -13,11 +13,15 @@
         align-items: center;
         text-align: center;
     }
+    .footer__item{
+        width: auto;
+    }
     .payment {
         align-items: center;
     }
     .payment ul{
         text-align: center;
+        padding: 0;
     } 
 }
 @media (max-width: 650px){
