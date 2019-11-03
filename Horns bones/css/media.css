@@ -7,6 +7,16 @@
     }
 
 }
+@media (max-width: 942px){
+    .catalog__item__inner{
+        flex-direction: column;
+        align-items: center;
+    }
+    .catalog__item__main{
+        max-width: 510px;
+    }
+
+}
 @media (max-width: 750px){
     .footer__inner{
         flex-direction: column;
