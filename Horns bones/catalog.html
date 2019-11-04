@@ -11,7 +11,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
 
 
-    <script src="https://kit.fontawesome.com/6ba81d1f4c.js" crossorigin="anonymous"></script>
+
+
+
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,6 +23,7 @@
 </head>
 
 <body>
+
     <header>
         <div class="header__top">
             <div class="container">
@@ -54,15 +59,15 @@
     <section class="catalog__item">
         <div class="container">
             <div class="catalog__item__inner">
-                <div class="catalog__item__photo">
-                    <div class="catalog__big__photo">
-                        <img src="img/goods-img3.jpg" alt="">
+                <div id="gallery">
+                    <div id="panel">
+                        <img id="largeImage" src="img/goods-img1.jpg" />
                     </div>
-                    <div class="catalog__small__photo">
-                        <div class="catalog__small__photo__item"><img src="img/goods-img3.jpg" alt=""></div>
-                        <div class="catalog__small__photo__item"><img src="img/goods-img3.jpg" alt=""></div>
-                        <div class="catalog__small__photo__item"><img src="img/goods-img3.jpg" alt=""></div>
-                        <div class="catalog__small__photo__item"><img src="img/goods-img3.jpg" alt=""></div>
+                    <div id="thumbs">
+                        <img src="img/goods-img1.jpg" alt="Описание 1" />
+                        <img src="img/goods-img2.jpg" alt="Описание 2" />
+                        <img src="img/goods-img3.jpg" alt="Описание 3" />
+                        <img src="img/goods-img4.jpg" alt="Описание 4" />
                     </div>
                 </div>
                 <div class="catalog__item__main">
@@ -99,16 +104,6 @@
         </div>
 
     </section>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -184,6 +179,15 @@
             Copyright © 2019 | Horns & Bones
         </div>
     </div>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $('#thumbs').delegate('img', 'click', function () {
+            $('#largeImage').attr('src', $(this).attr('src').replace('thumb', 'large'));
+            $('#description').html($(this).attr('alt'));
+        });
+    </script>
+
 </body>
 
 </html>
