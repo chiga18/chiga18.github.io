@@ -20,6 +20,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Horns bones</title>
+    <style>
+        .overlay {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            opacity: 0.5;
+            filter: alpha(opacity=50);
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: #000;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            border: 3px solid #999;
+            background: #fff;
+            width: 194px;
+            height: 194px;
+            top: 50%;
+            left: 50%;
+            margin: -100px 0 0 -100px;
+            z-index: 1000;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .close {
+            display: block;
+            width: 24px;
+            text-align: center;
+            cursor: pointer;
+            height: 24px;
+            line-height: 24px;
+            background: #fff;
+            color: red;
+            border: 3px solid red;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            text-decoration: none;
+            border-radius: 3px;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -90,7 +137,9 @@
                     </div>
                     <div class="add__to__sc">
                         <a href="#" class="add__to__sc__btn">Добавить в корзину</a>
-                        <a class="one__click" href="#">Купить в 1 клик</a>
+                        <a class="one__click open_popup" rel="popup1">Купить в 1 клик</a>
+
+
                     </div>
                     <div class="catalog__social">
                         <a href="#"><img src="img/catalog-social-1.png" alt=""></a>
@@ -102,6 +151,30 @@
                 </div>
             </div>
         </div>
+
+        <div class="overlay"></div>
+        <div class="popup" id="popup1">
+            <span class="close">X</span>
+            <form action="#" method="post">
+
+                <b>Купить в 1 клик</b>
+                <br>
+                <table border=0>
+                    <tr>
+                        <td>Имя</td>
+                        <td><input type="text" name="fio" size=20 /></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail</td>
+                        <td><input type="text" name="email" /></td>
+                    </tr>
+                </table>
+                <p><input type="submit" value="Купить" />
+
+            </form>
+        </div>
+
+
 
     </section>
 
@@ -186,6 +259,16 @@
             $('#largeImage').attr('src', $(this).attr('src').replace('thumb', 'large'));
             $('#description').html($(this).attr('alt'));
         });
+    </script>
+    <script>
+        $('.open_popup').click(function () {
+            var popup_id = $('#' + $(this).attr("rel"));
+            $(popup_id).show();
+            $('.overlay').show();
+        })
+        $('.popup .close, .overlay').click(function () {
+            $('.overlay, .popup').hide();
+        })
     </script>
 
 </body>
