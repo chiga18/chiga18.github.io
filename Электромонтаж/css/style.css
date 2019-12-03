@@ -423,3 +423,11 @@ h2{
     font-weight: 700;
     -webkit-text-stroke: #ffffff 2px;
 }
+.section__map{
+}
+.material__certificates p{
+  color: #000000;
+  font-family: Verdana;
+  font-size: 18px;
+  font-weight: 700;
+}
