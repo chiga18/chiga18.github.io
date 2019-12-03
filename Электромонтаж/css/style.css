@@ -348,6 +348,7 @@
   }
   
 
+
 header{
     background: #00579a;
     position: relative;
@@ -409,6 +410,7 @@ h2{
     margin-bottom:40px;
 }
 
+
 .about__company{
     height: 560px;
     background: url(../img/about-img.png) no-repeat;
@@ -459,4 +461,16 @@ h2{
   font-size: 48px;
   font-weight: 700;
   margin-right: 50px;
+}
+.reviews-item{
+  margin-bottom: 20px;
+}
+.reviews-item span{
+  font-weight: bold;
+}
+.attention{
+  color: #9b9da1;
+  font-family: Verdana;
+  font-size: 24px;
+  font-weight: 700;
 }
