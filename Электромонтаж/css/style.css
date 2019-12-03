@@ -413,7 +413,7 @@ h2{
     height: 560px;
     background: url(../img/about-img.png) no-repeat;
     display: flex;
-    justify-content: right;
+    justify-content: flex-end;
     align-items: flex-end;
 }
 .about__company p{
@@ -423,11 +423,40 @@ h2{
     font-weight: 700;
     -webkit-text-stroke: #ffffff 2px;
 }
-.section__map{
-}
 .material__certificates p{
   color: #000000;
   font-family: Verdana;
   font-size: 18px;
   font-weight: 700;
+}
+.certificates-small-item{
+  margin-bottom: 20px;
+  text-align: center;
+}
+.certificates-small-item-title{
+  text-align: center;
+  color: #a59999;
+  font-family: Verdana;
+  font-size: 18px;
+  font-weight: 700;
+}
+.map{
+  display: block;
+  margin: 0 auto;
+}
+.statistics ul{
+  list-style: none;
+}
+.statistics li{
+  color: #807a7a;
+  font-family: Verdana;
+  font-size: 24px;
+  font-weight: 700;
+}
+.statistics li span{
+  color: #b7adad;
+  font-family: "Arial Narrow";
+  font-size: 48px;
+  font-weight: 700;
+  margin-right: 50px;
 }
