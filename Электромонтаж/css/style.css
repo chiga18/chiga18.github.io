@@ -348,7 +348,9 @@
   }
   
 
-
+body{
+    font-family: Verdana;;
+}
 header{
     background: #00579a;
     position: relative;
@@ -473,4 +475,40 @@ h2{
   font-family: Verdana;
   font-size: 24px;
   font-weight: 700;
+}
+
+
+
+.feedback{
+  width: 300px;
+  background: #fbfbfb;
+  box-shadow: 0px 1px 10px
+  #000;
+  text-align: center;
+  margin: 0 auto;
+}
+.feedback__title{
+  color: #565757;
+  font-family: Verdana;
+  font-size: 16px;
+  margin-bottom: 14px;;
+}
+.feedback__title span{
+  font-weight: 700;
+  font-size: 25px;
+  color: #000000;
+}
+.feedback input{
+  margin-bottom: 14px;
+  text-align: center;
+
+}
+.feedback__form__btn{
+  background: #2996f1;
+  color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 8px 29px;
+}
+.feedback__form__input{
+  color: #000000;
 }
