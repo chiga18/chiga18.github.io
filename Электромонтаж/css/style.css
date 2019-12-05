@@ -466,6 +466,8 @@ h2{
 }
 .reviews-item{
   margin-bottom: 20px;
+  font-size: 19px;
+  color: #000000;
 }
 .reviews-item span{
   font-weight: bold;
@@ -475,6 +477,31 @@ h2{
   font-family: Verdana;
   font-size: 24px;
   font-weight: 700;
+}
+
+.price table{
+  box-sizing: border-box;
+  padding: 3px;
+  width: 90%;
+  margin: 0 auto;
+}
+.price th{
+  background: #379dce;
+  color: #ffffff;
+  border: 1px solid #e7e7e7;
+  padding: 25px;
+}
+.price tr:nth-child(2n){
+  background: #edf1f3;
+}
+.price td{
+  border: 1px solid #e7e7e7;
+  width: 30%;
+  text-align: center;
+  padding: 25px 0 ;
+}
+.price td:nth-child(3){
+  width: 40%;
 }
 
 
