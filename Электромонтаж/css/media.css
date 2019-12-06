@@ -20,6 +20,9 @@
     .works-item-text{
         font-size: 25px;
     }
+    .btn_mobil,.works-item-text{
+        display: block;
+    }
 }
 @media (max-width:750px){
     header{

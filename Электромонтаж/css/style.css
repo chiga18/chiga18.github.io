@@ -559,3 +559,9 @@ h2{
 .feedback__form__input{
   color: #000000;
 }
+.btn_mobil{
+  display: none;
+}
+.works-item-text{
+  display: none;
+}

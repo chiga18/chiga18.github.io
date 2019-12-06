@@ -18,7 +18,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Электромантаж</title>
+    <title>Электромонтаж</title>
 
 <style>
  /* свойства модального окна по умолчанию */
@@ -161,9 +161,9 @@
                             <div class="feedback">
                                     <a href="#close" title="Close" class="close">×</a>
                                     <div class="feedback__title"><span>Заказать</span> <br>Обратный звонок!</div>
-                                    <form action="">
-                                        <input class="feedback__form__input" type="tel" placeholder="+7(888) 888-88-88"><br>
-                                        <input class="feedback__form__btn" type="button" value="Отправить запрос">
+                                    <form action="send.php" method="post">
+                                        <input class="feedback__form__input" type="tel" name="tel" placeholder="+7(888) 888-88-88"><br>
+                                        <input class="feedback__form__btn" type="submit" value="Отправить запрос">
                                     </form>
                                 </div>
                     </div>
