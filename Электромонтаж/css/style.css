@@ -565,3 +565,32 @@ h2{
 .works-item-text{
   display: none;
 }
+
+
+
+/* Кнопки ДЕЛАЛИ и ВОПРОСИТЕЛЬНЫЙ ЗНАК */
+.works-item-img{
+  position: relative;
+}
+.works-item-btn{
+  position: absolute;
+  bottom: 3%;
+  right: 10%;
+}
+
+.works-item-btn-inner{
+  position: relative;
+}
+
+.works-item-btn-text{
+  color: #ffffff;
+  font-family: Verdana;
+  font-size: 23px;
+  font-weight: 700;
+
+  position: absolute;
+  top: 50%;   
+  left: 50%;                      
+  transform: translate(-50%, -50%);
+
+}

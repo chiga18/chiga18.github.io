@@ -23,6 +23,9 @@
     .btn_mobil,.works-item-text{
         display: block;
     }
+    .works-item-btn{
+        display: none;
+    }
 }
 @media (max-width:750px){
     header{

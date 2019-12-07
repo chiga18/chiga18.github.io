@@ -1,3 +1,49 @@
+<?php
+// Загружаем данные из файла в строку
+$string = file_get_contents("user.json");
+
+// Превращаем строку в объект
+$data = json_decode($string);
+
+// Отлавливаем ошибки возникшие при превращении
+switch (json_last_error()) {
+  case JSON_ERROR_NONE:
+    $data_error = '';
+    break;
+  case JSON_ERROR_DEPTH:
+    $data_error = 'Достигнута максимальная глубина стека';
+    break;
+  case JSON_ERROR_STATE_MISMATCH:
+    $data_error = 'Неверный или не корректный JSON';
+    break;
+  case JSON_ERROR_CTRL_CHAR:
+    $data_error = 'Ошибка управляющего символа, возможно верная кодировка';
+    break;
+  case JSON_ERROR_SYNTAX:
+    $data_error = 'Синтаксическая ошибка';
+    break;
+  case JSON_ERROR_UTF8:
+    $data_error = 'Некорректные символы UTF-8, возможно неверная кодировка';
+    break;	
+  default:
+    $data_error = 'Неизвестная ошибка';
+    break;
+}
+
+// Если ошибки есть, то выводим их
+if($data_error !='') echo $data_error;
+
+// Присваиваим данные переменным
+
+$elektroshchity = $data->elektroshchity;
+$tekh_zadaniya = $data->tekh_zadaniya;
+$domov_elektroficirovanno = $data->domov_elektroficirovanno;
+$stolbov_trubostoek = $data->stolbov_trubostoek;
+$kilometrov_provodov = $data->kilometrov_provodov;
+$rozetok_vyklyuchatelej = $data->rozetok_vyklyuchatelej;
+
+?>
+
 <!DOCTYPE html>
 <html lang="ru">
 
@@ -10,130 +56,147 @@
     <!-- link Bootstrap -->
     <link rel="stylesheet" href="libs/bootstrap.css">
 
-
-    <!--link script-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Электромонтаж</title>
 
-<style>
- /* свойства модального окна по умолчанию */
-.modal {
-    position: fixed; /* фиксированное положение */
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0,0,0,0.5); /* цвет фона */
-    z-index: 1050;
-    opacity: 0; /* по умолчанию модальное окно прозрачно */
-    -webkit-transition: opacity 200ms ease-in; 
-    -moz-transition: opacity 200ms ease-in;
-    transition: opacity 200ms ease-in; /* анимация перехода */
-    pointer-events: none; /* элемент невидим для событий мыши */
-    margin: 0;
-    padding: 0;
-}
-/* при отображении модального окно */
-.modal:target {
-    opacity: 1; /* делаем окно видимым */
-	  pointer-events: auto; /* элемент видим для событий мыши */
-    overflow-y: auto; /* добавляем прокрутку по y, когда элемент не помещается на страницу */
-}
-/* ширина модального окна и его отступы от экрана */
-.modal-dialog {
-    position: relative;
-    width: auto;
-    margin: 10px;
-}
-@media (min-width: 576px) {
-  .modal-dialog {
-      max-width: 500px;
-      margin: 30px auto; /* для отображения модального окна по центру */
-  }
-}
-/* свойства для блока, содержащего контент модального окна */ 
-.modal-content {
-    position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    background-color: #fff;
-    -webkit-background-clip: padding-box;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: .3rem;
-    outline: 0;
-}
-@media (min-width: 768px) {
-  .modal-content {
-      -webkit-box-shadow: 0 5px 15px rgba(0,0,0,.5);
-      box-shadow: 0 5px 15px rgba(0,0,0,.5);
-  }
-}
-/* свойства для заголовка модального окна */
-.modal-header {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: justify;
-    -webkit-justify-content: space-between;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 15px;
-    border-bottom: 1px solid #eceeef;
-}
-.modal-title {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 1.5;
-    font-size: 1.25rem;
-    font-weight: 500;
-}
-/* свойства для кнопки "Закрыть" */
-.close {
-    float: right;
-    font-family: sans-serif;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
-    text-decoration: none;
-}
-/* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
-.close:focus, .close:hover {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-    opacity: .75;
-}
-/* свойства для блока, содержащего основное содержимое окна */
-.modal-body {
-  position: relative;
-    -webkit-box-flex: 1;
-    -webkit-flex: 1 1 auto;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 15px;
-    overflow: auto;
-}
+    <style>
+        /* свойства модального окна по умолчанию */
+        .modal {
+            position: fixed;
+            /* фиксированное положение */
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.5);
+            /* цвет фона */
+            z-index: 1050;
+            opacity: 0;
+            /* по умолчанию модальное окно прозрачно */
+            -webkit-transition: opacity 200ms ease-in;
+            -moz-transition: opacity 200ms ease-in;
+            transition: opacity 200ms ease-in;
+            /* анимация перехода */
+            pointer-events: none;
+            /* элемент невидим для событий мыши */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* при отображении модального окно */
+        .modal:target {
+            opacity: 1;
+            /* делаем окно видимым */
+            pointer-events: auto;
+            /* элемент видим для событий мыши */
+            overflow-y: auto;
+            /* добавляем прокрутку по y, когда элемент не помещается на страницу */
+        }
+
+        /* ширина модального окна и его отступы от экрана */
+        .modal-dialog {
+            position: relative;
+            width: auto;
+            margin: 10px;
+        }
+
+        @media (min-width: 576px) {
+            .modal-dialog {
+                max-width: 500px;
+                margin: 30px auto;
+                /* для отображения модального окна по центру */
+            }
+        }
+
+        /* свойства для блока, содержащего контент модального окна */
+        .modal-content {
+            position: relative;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            background-color: #fff;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: .3rem;
+            outline: 0;
+        }
+
+        @media (min-width: 768px) {
+            .modal-content {
+                -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+                box-shadow: 0 5px 15px rgba(0, 0, 0, .5);
+            }
+        }
+
+        /* свойства для заголовка модального окна */
+        .modal-header {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #eceeef;
+        }
+
+        .modal-title {
+            margin-top: 0;
+            margin-bottom: 0;
+            line-height: 1.5;
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        /* свойства для кнопки "Закрыть" */
+        .close {
+            float: right;
+            font-family: sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1;
+            color: #000;
+            text-shadow: 0 1px 0 #fff;
+            opacity: .5;
+            text-decoration: none;
+        }
+
+        /* свойства для кнопки "Закрыть" при нахождении её в фокусе или наведении */
+        .close:focus,
+        .close:hover {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+            opacity: .75;
+        }
+
+        /* свойства для блока, содержащего основное содержимое окна */
+        .modal-body {
+            position: relative;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1 1 auto;
+            -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+            padding: 15px;
+            overflow: auto;
+        }
     </style>
 
 </head>
@@ -155,23 +218,24 @@
                 Профессиональный электромонтаж<br>
                 Екатеринбург и область
             </h1>
-            
+
             <div id="openModal" class="modal">
-                    <div class="modal-body">    
-                            <div class="feedback">
-                                    <a href="#close" title="Close" class="close">×</a>
-                                    <div class="feedback__title"><span>Заказать</span> <br>Обратный звонок!</div>
-                                    <form action="send.php" method="post">
-                                        <input class="feedback__form__input" type="tel" name="tel" placeholder="+7(888) 888-88-88"><br>
-                                        <input class="feedback__form__btn" type="submit" value="Отправить запрос">
-                                    </form>
-                                </div>
+                <div class="modal-body">
+                    <div class="feedback">
+                        <a href="#close" title="Close" class="close">×</a>
+                        <div class="feedback__title"><span>Заказать</span> <br>Обратный звонок!</div>
+                        <form action="send.php" method="post">
+                            <input class="feedback__form__input" type="tel" name="tel"
+                                placeholder="+7(888) 888-88-88"><br>
+                            <input class="feedback__form__btn" type="submit" value="Отправить запрос">
+                        </form>
                     </div>
-                  </div>
+                </div>
+            </div>
 
             <p> сертифицированные материалы, атестованные электрики бесплатный выезд и расчет сметы</p>
             <img class="intro-img" src="img/intro-img.jpg" alt="">
- 
+
             <div class="feedback__btn">
                 <a href="#openModal">
                     <img src="img/feedback-button.png" alt="">
@@ -189,6 +253,12 @@
         <div class="row">
             <div class="works-item  col-md-4">
                 <img class="works-item-img" src="img/works-item1.png" alt="">
+                <a href="#" class="works-item-btn">
+                    <div class="works-item-btn-inner">
+                        <img src="img/Детали_btn.png" alt="">
+                        <div class="works-item-btn-text">Детали</div>
+                    </div>
+                </a>
                 <a href="#openModal"><img class="btn_mobil" src="img/btn_mobil.png" alt=""></a>
                 <div class="works-item-text">монтаж систем автоматики,
                     сборка щитов управления
@@ -196,6 +266,12 @@
             </div>
             <div class="works-item col-sm-12 col-md-4">
                 <img src="img/works-item2.png" alt="">
+                <a href="#" class="works-item-btn">
+                    <div class="works-item-btn-inner">
+                        <img src="img/Детали_btn.png" alt="">
+                        <div class="works-item-btn-text">Детали</div>
+                    </div>
+                </a>
                 <a href="#openModal"><img class="btn_mobil" src="img/btn_mobil.png" alt=""></a>
                 <div class="works-item-text">монтаж систем автоматики,
                     сборка щитов управления
@@ -203,6 +279,12 @@
             </div>
             <div class="works-item col-sm-12 col-md-4">
                 <img src="img/works-item3.png" alt="">
+                <a href="#" class="works-item-btn">
+                    <div class="works-item-btn-inner">
+                        <img src="img/Детали_btn.png" alt="">
+                        <div class="works-item-btn-text">Детали</div>
+                    </div>
+                </a>
                 <a href="#openModal"><img class="btn_mobil" src="img/btn_mobil.png" alt=""></a>
                 <div class="works-item-text">монтаж систем автоматики,
                     сборка щитов управления
@@ -210,6 +292,12 @@
             </div>
             <div class="works-item col-sm-12 col-md-4">
                 <img src="img/works-item4.png" alt="">
+                <a href="#" class="works-item-btn">
+                    <div class="works-item-btn-inner">
+                        <img src="img/Детали_btn.png" alt="">
+                        <div class="works-item-btn-text">Детали</div>
+                    </div>
+                </a>
                 <a href="#openModal"><img class="btn_mobil" src="img/btn_mobil.png" alt=""></a>
                 <div class="works-item-text">монтаж систем автоматики,
                     сборка щитов управления
@@ -217,6 +305,12 @@
             </div>
             <div class="works-item col-sm-12 col-md-4">
                 <img src="img/works-item5.png" alt="">
+                <a href="#" class="works-item-btn">
+                    <div class="works-item-btn-inner">
+                        <img src="img/question__btn.png" alt="">
+                        <div class="works-item-btn-text">?</div>
+                    </div>
+                </a>
                 <a href="#openModal"><img class="btn_mobil" src="img/btn_mobil.png" alt=""></a>
                 <div class="works-item-text">монтаж систем автоматики,
                     сборка щитов управления
@@ -224,6 +318,12 @@
             </div>
             <div class="works-item col-sm-12 col-md-4">
                 <img src="img/works-item6.png" alt="">
+                <a href="#" class="works-item-btn">
+                    <div class="works-item-btn-inner">
+                        <img src="img/question__btn.png" alt="">
+                        <div class="works-item-btn-text">?</div>
+                    </div>
+                </a>
                 <a href="#openModal"><img class="btn_mobil" src="img/btn_mobil.png" alt=""></a>
                 <div class="works-item-text">монтаж систем автоматики,
                     сборка щитов управления
@@ -325,12 +425,12 @@
         <div class="statistics">
             <h2>статистика о нас за 2019 год</h2>
             <ul>
-                <li><span>87</span>Электрощитов нами собрано и подключено</li>
-                <li><span>56</span>Выполнено техзаданий</li>
-                <li><span>10</span>Домов электрофицированно под ключ</li>
-                <li><span>14</span>Столбов и трубостоек установлено</li>
-                <li><span>7</span>Километров проводов уложено</li>
-                <li><span>353</span>Розеток и выключателей установлено</li>
+                <li><span><?=$elektroshchity?></span>Электрощитов нами собрано и подключено</li>
+                <li><span><?=$tekh_zadaniya?></span>Выполнено техзаданий</li>
+                <li><span><?=$domov_elektroficirovanno?></span>Домов электрофицированно под ключ</li>
+                <li><span><?=$stolbov_trubostoek?></span>Столбов и трубостоек установлено</li>
+                <li><span><?=$kilometrov_provodov?></span>Километров проводов уложено</li>
+                <li><span><?=$rozetok_vyklyuchatelej?></span>Розеток и выключателей установлено</li>
             </ul>
         </div>
         <div class="feedback__btn">
@@ -477,7 +577,9 @@
         </div>
     </div>
 
- 
+
+
+
 
 
     <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
